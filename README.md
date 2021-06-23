@@ -87,6 +87,79 @@ function fzf-find-files(){
 }
 ```
 
+
+## Find Dirs
+```bash
+function fzf-cd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+  ls
+}
+```
+
+## Find Dirs + Hidden
+```bash
+function fzf-cd-incl-hidden() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+  ls
+}
+```
+
+## Change into the directory of the selected file
+```bash
+function fzf-cd-to-file() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+   ls
+}
+```
+
+## Change to selected parent directory
+```bash
+function fzf-cd-to-parent() {
+  local declare dirs=()
+  get_parent_dirs() {
+    if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
+    if [[ "${1}" == '/' ]]; then
+      for _dir in "${dirs[@]}"; do echo $_dir; done
+    else
+      get_parent_dirs $(dirname "$1")
+    fi
+  }
+  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf-tmux --tac)
+  cd "$DIR"
+  ls
+}
+```
+
+## Search Environment Variables
+```bash
+function fzf-env-vars() {
+  local out
+  out=$(env | fzf)
+  echo $(echo $out | cut -d= -f2)
+}
+```
+
+
+## Kill process
+```bash
+function fzf-kill-processes() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    echo $pid | xargs kill -${1:-9}
+  fi
+}
+```
+
+
 ## (Bonus) List all awesome-fzf functions
 ```bash
 AWESOME_FZF_LOCATION="/path/to/awsome-fzf.zsh"
