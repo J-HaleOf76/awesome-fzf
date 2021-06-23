@@ -30,7 +30,7 @@ function fzf-rm() {
   fi
 }
 ```
-![enhanced rm](https://i.ibb.co/vzBtgRV/ezgif-1-e192b5ff4b05.gif)
+![enhanced rm](https://i.ibb.co/n04XVWF/ezgif-1-9930c7cd8903.gif)
 
 
 ## Enhanced man
