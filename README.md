@@ -77,3 +77,8 @@ function fzf-filefinder() {
   execute-fzf "" $EDITOR
 }
 ```
+
+
+# Other Awesome FZF Plugins
+
+[FZF Git Fuzzy](https://github.com/bigH/git-fuzzy)
