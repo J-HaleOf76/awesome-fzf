@@ -1,4 +1,4 @@
-# A *complete* list of fzf functions
+# A *semi-complete* list of fzf functions
 
 *Please note, consider this repo pre-alpha right now.*
 *There is work to be done to make sure these functions are portable and the syntax is concise and easy to understand. Also adding support for $FZF_DEFAULT_OPTS.*
@@ -16,6 +16,9 @@
 - Copy any of these functions to your zshrc or preferred location
 - Either rename the function stub to your liking, or create an alias e.g
     `alias man="fzf-man"`
+- Alternatively clone this repo or curl the awesome-fzf.\* file of your preference
+- Source the file in your zshrc etc e.g. `source /path/to/awesome.fzf.zsh`
+- All the commands will be available on your shell, similarly you can create aliases of your choosing
 
 
 ## Enhanced rm
