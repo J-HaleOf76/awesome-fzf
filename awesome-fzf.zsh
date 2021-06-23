@@ -4,9 +4,9 @@ AWESOME_FZF_LOCATION="/path/to/awsome-fzf.zsh"
 #List Awesome FZF Functions
 function fzf-awesome-list() {
 if [[ -f $AWESOME_FZF_LOCATION ]]; then
-    selected=$(grep -E "(function fzf-)(.*?)[^(]*" $AWESOME_FZF_LOCATION | sed -e "s/function fzf-//" | sed -e "s/() {//" | fzf --reverse --prompt="awesome fzf functions")
+    selected=$(grep -E "(function fzf-)(.*?)[^(]*" $AWESOME_FZF_LOCATION | sed -e "s/function fzf-//" | sed -e "s/() {//" | grep -v "function" | fzf --reverse --prompt="awesome fzf functions > ")
 else
-    echo "awesome fzf not found please try updating the path in awesome-fzf.zsh"
+    echo "awesome fzf not found"
 fi
     case "$selected" in
         "");; #don't throw an exit error when we dont select anything
