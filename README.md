@@ -77,11 +77,13 @@ function fzf-aliases-functions() {
 ## File Finder (Open in $EDITOR)
 ```bash
 function fzf-find-files(){
-  selected="$(fzf --multi --reverse)"
-  case "$selected" in
-    "") echo "cancelled fzf";;
-    *) eval "$EDITOR" "$selected";;
-  esac
+  local file=$(fzf --multi --reverse) #get file from fzf
+  if [[ $file ]]; then
+    for prog in $(echo $file); #open all the selected files
+    do; $EDITOR $prog; done;
+  else
+    echo "cancelled fzf"
+  fi
 }
 ```
 
