@@ -28,7 +28,7 @@ echo | fzf -q "$*" --preview-window=up:99% --preview="eval {q}"
 }
 
 ## Search list of your aliases and functions
-function search-aliases-functions() {
+function fzf-aliases-functions() {
     CMD=$(
         (
             (alias)
@@ -41,6 +41,10 @@ function search-aliases-functions() {
 
 
 ## File Finder (Open in $EDITOR)
-function fzf-filefinder() {
-  execute-fzf "" $EDITOR
+function fzf-find-files(){
+  selected="$(fzf --multi --reverse)"
+  case "$selected" in
+    "") echo "cancelled fzf";;
+    *) eval "$EDITOR" "$selected";;
+  esac
 }
