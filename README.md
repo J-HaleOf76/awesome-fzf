@@ -1,5 +1,9 @@
 # A *complete* list of fzf functions
 
+*Please note, consider this repo pre-alpha right now.*
+*There is work to be done to make sure these functions are portable and the syntax is concise and easy to understand. Also adding support for $FZF_DEFAULT_OPTS.*
+*If you wish to contribute, pull requests are highly appreciated!*
+
 # How to use these functions.
 
 - Copy any of these functions to your zshrc or preferred location
@@ -41,6 +45,21 @@ function fzf-eval(){
 echo | fzf -q "$*" --preview-window=up:99% --preview="eval {q}"
 }
 ```
+
+## Search list of your aliases and functions
+```bash
+function search-aliases-functions() {
+    CMD=$(
+        (
+            (alias)
+            (functions | grep "()" | cut -d ' ' -f1 | grep -v "^_" )
+        ) | fzf | cut -d '=' -f1
+    );
+
+    eval $CMD
+}
+```
+
 
 ## File Finder (Open in $EDITOR)
 ```bash
