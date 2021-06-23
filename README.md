@@ -4,6 +4,10 @@
 *There is work to be done to make sure these functions are portable and the syntax is concise and easy to understand. Also adding support for $FZF_DEFAULT_OPTS.*
 *If you wish to contribute, pull requests are highly appreciated!*
 
+
+[//]: # (NOTE FOR CONTRIBUTERS, you can make a gif of screen recording with below site)
+[//]: # (https://ezgif.com/video-to-gif)
+
 # How to use these functions.
 
 - Copy any of these functions to your zshrc or preferred location
