@@ -131,7 +131,7 @@ function fzf-kill-processes() {
 
 # Enhanced Git Status (Open multiple files with tab + diff preview)
 function fzf-git-status() {
-    is_in_git_repo || return
+    git rev-parse HEAD > /dev/null 2>&1 || echo "You are not in a git repository" && return
     local selected
     selected=$(git -c color.status=always status --short |
         fzf-down -m --ansi --nth 2..,.. \
