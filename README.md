@@ -159,7 +159,7 @@ function fzf-kill-processes() {
 }
 ```
 
-# Enhanced Git Status (Open multiple files with tab + diff preview)
+## Enhanced Git Status (Open multiple files with tab + diff preview)
 ```bash
 function fzf-git-status() {
     is_in_git_repo || return
