@@ -159,6 +159,22 @@ function fzf-kill-processes() {
 }
 ```
 
+# Enhanced Git Status (Open multiple files with tab + diff preview)
+```bash
+function fzf-git-status() {
+    is_in_git_repo || return
+    local selected
+    selected=$(git -c color.status=always status --short |
+        fzf-down -m --ansi --nth 2..,.. \
+        --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+        cut -c4- | sed 's/.* -> //')
+            if [[ $selected ]]; then
+                for prog in $(echo $selected);
+                do; $EDITOR $prog; done;
+            fi
+    }
+```
+
 
 ## (Bonus) List all awesome-fzf functions
 ```bash
