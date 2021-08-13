@@ -175,14 +175,13 @@ fzf-git-status() {
     }
 ```
 
-# Checkout to existing branch or else create new branch. gco <branch-name>.
-# Falls back to fuzzy branch selector list powered by fzf if no args.
-# Replacement for both git checkout and git branch commands
-## Usage
-gco <somenewbranch>
-gco <someexistingbranchremoteorlocal>
-gco *brings up fzf list of existing branches*
-
+## Checkout to existing branch or else create new branch. gco <branch-name>.
+Falls back to fuzzy branch selector list powered by fzf if no args.
+Replacement for both git checkout and git branch commands
+**Usage**
+gco - brings up fzf list of existing branches to checkout to on selection
+gco <somenewbranch> - create and checkout to new branch
+gco <someexistingbranchremoteorlocal> - checkout to existing branch
 ```bash
 fzf-checkout(){
     if git rev-parse --git-dir > /dev/null 2>&1; then
