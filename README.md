@@ -17,7 +17,7 @@
 - Either rename the function stub to your liking, or create an alias e.g
     `alias man="fzf-man"`
 - Alternatively clone this repo or curl the awesome-fzf.\* file of your preference
-- Source the file in your zshrc etc e.g. `source /path/to/awesome.fzf.zsh`
+- Source the file in your zshrc etc e.g. `source /path/to/awesome-fzf.zsh`
 - All the commands will be available on your shell, similarly you can create aliases of your choosing
 
 
@@ -27,7 +27,7 @@ function fzf-rm() {
   if [[ "$#" -eq 0 ]]; then
     local files
     files=$(find . -maxdepth 1 -type f | fzf --multi)
-    echo $files | xargs -I '{}' rm {} #we use xargs so that filenames to capture filenames with spaces in them properly
+    echo $files | xargs -I '{}' rm {} #we use xargs to capture filenames with spaces in them properly
   else
     command rm "$@"
   fi
